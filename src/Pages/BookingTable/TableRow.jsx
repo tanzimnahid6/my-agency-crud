@@ -7,6 +7,7 @@ const TableRow = ({ serve, index, handleDelete,setModalData }) => {
   // console.log(serve);
 
   const { name, selectedFeature } = serve
+//   console.log(serve);
   return (
     <>
      
@@ -17,7 +18,7 @@ const TableRow = ({ serve, index, handleDelete,setModalData }) => {
         <td>
           <div className="flex gap-4">
             <Link>
-              <label onClick={()=>setModalData('Hello')} htmlFor="my-modal-6" className="btn btn-sm btn-info">
+              <label onClick={()=>setModalData('hello')} htmlFor="my-modal-6" className="btn btn-sm btn-info">
                 Edit
               </label>
             </Link>
