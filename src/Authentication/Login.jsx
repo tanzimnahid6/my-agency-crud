@@ -28,7 +28,7 @@ const Login = () => {
       })
   }
   return (
-    <div className="h-[70vh]">
+    <div className="h-[80vh]">
       <div className="block max-w-sm rounded-lg bg-lime-100 p-12 my-20 mx-auto ">
         <form onSubmit={handleLogin}>
           {/*E-mail input*/}
@@ -51,7 +51,7 @@ const Login = () => {
           </div>
           {/*Submit button*/}
           <button type="submit" className="btn btn-block btn-sm btn-info">
-            Submit
+           Login
           </button>
           <p className="text-center m-2">
             Are you Registered ? please{" "}
