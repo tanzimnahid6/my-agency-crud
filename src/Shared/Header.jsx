@@ -24,15 +24,20 @@ const Header = () => {
         <button>
           <Link to="/about">About</Link>
         </button>
+     {
+      user &&   <button>
+          <Link to="/booking">My Booking</Link>
+        </button>
+     }
       </div>
       <div>
         {user ? (
-          <button onClick={handleLogOut}>
+          <button className="btn" onClick={handleLogOut}>
             <Link>Logout</Link>
           </button>
         ) : (
           <button>
-            <Link to="/login">Login</Link>
+            <Link className="btn" to="/login">Login</Link>
           </button>
         )}
       </div>

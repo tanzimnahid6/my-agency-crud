@@ -6,6 +6,7 @@ import Details from "../Pages/Details/Details"
 import PrivetRoute from "./PrivetRoute"
 import Login from "../Authentication/Login"
 import Register from "../Authentication/Register"
+import Bookings from "../Pages/BookingTable/Bookings"
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
        {
         path:'register',
         element:<Register></Register>
+       },
+       {
+        path:'booking',
+        element:<Bookings></Bookings>
        },
        {
         path:'service/:id',
