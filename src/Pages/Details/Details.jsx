@@ -1,13 +1,16 @@
 import { useContext, useState } from "react"
 import { useLoaderData } from "react-router-dom"
 import { AuthContext } from "../../AuthProvider/AuthProvider"
+import PricingCard from "../Pricing/PricingCard"
 
 const Details = () => {
   const details = useLoaderData()
   const { user } = useContext(AuthContext)
   const userEmail = user.email
-
-  const { img, name } = details
+  const pricing = details.priceDetails
+  console.log(pricing)
+  console.log(details)
+  const { img, name} = details
   const [f1, f2, f3] = details.features
 
   const [selectedFeature, setSelectedFeature] = useState("")
@@ -20,15 +23,26 @@ const Details = () => {
     e.preventDefault()
     const email = e.target.email.value
     const name = e.target.name.value
-
-    const info = { name, selectedFeature, email }
-    console.log(info)
-
+    const bookingInfo = { name, selectedFeature, email }
     setSelectedFeature("")
+
+    fetch(`http://localhost:5000/bookings`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookingInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.acknowledged){
+          alert('Data added');
+        }
+      })
   }
 
   return (
-    <div className="container my-8 bg-slate-200 mx-auto p-8">
+    <div className="container my-8 rounded bg-slate-200 mx-auto p-8">
       <div className="flex flex-wrap justify-center items-center">
         <div className="w-full  md:w-1/2">
           <img src={img} alt="Feature" className=" w-full rounded" />
@@ -90,6 +104,13 @@ const Details = () => {
             </button>
           </form>
         </div>
+      </div>
+      <h1 className="text-center text-3xl font-bold mt-12 underline">Price Details</h1>
+      <div className="grid grid-cols-3 my-8">
+        {pricing &&
+          pricing.map((price, i) => (
+            <PricingCard key={i} price={price}></PricingCard>
+          ))}
       </div>
     </div>
   )
